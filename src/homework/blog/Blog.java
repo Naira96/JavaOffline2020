@@ -1,6 +1,8 @@
-package homework.blog.model;
+package homework.blog;
 
 import homework.blog.exception.PostNotFoundException;
+import homework.blog.model.Category;
+import homework.blog.model.Post;
 import homework.blog.postStorage.CommandsBlog;
 import homework.blog.postStorage.impl.PostStorageImpl;
 
@@ -93,7 +95,7 @@ public class Blog implements CommandsBlog {
         String postData = scanner.nextLine();
         try {
             String[] postDataArr = postData.split(",");
-            Post post = new Post(postDataArr[0], postDataArr[1], Category.valueOf(postDataArr[2]), new Date());
+            Post post = new Post(postDataArr[0], postDataArr[1], Category.valueOf(postDataArr[2].toUpperCase()), new Date());
             postStorageImpl.add(post);
             System.out.println("Post was added!!");
         } catch (ArrayIndexOutOfBoundsException e) {

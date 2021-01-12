@@ -1,7 +1,7 @@
-package adPortal.storage.impl;
+package homework.adPortal.storage.impl;
 
-import adPortal.model.User;
-import adPortal.storage.UserStorage;
+import homework.adPortal.model.User;
+import homework.adPortal.storage.UserStorage;
 
 import java.util.HashMap;
 import java.util.Map;

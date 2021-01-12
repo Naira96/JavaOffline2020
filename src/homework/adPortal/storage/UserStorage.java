@@ -1,6 +1,6 @@
-package adPortal.storage;
+package homework.adPortal.storage;
 
-import adPortal.model.User;
+import homework.adPortal.model.User;
 
 public interface UserStorage {
 

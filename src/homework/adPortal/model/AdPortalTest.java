@@ -1,12 +1,12 @@
-package adPortal.model;
+package homework.adPortal.model;
 
-import adPortal.Commands;
-import adPortal.storage.AdStorage;
-import adPortal.storage.UserStorage;
-import adPortal.storage.impl.AdStorageFileImpl;
-import adPortal.storage.impl.AdStorageImpl;
-import adPortal.storage.impl.UserStorageFileImpl;
-import adPortal.storage.impl.UserStorageImpl;
+import homework.adPortal.Commands;
+import homework.adPortal.storage.AdStorage;
+import homework.adPortal.storage.UserStorage;
+import homework.adPortal.storage.impl.AdStorageFileImpl;
+import homework.adPortal.storage.impl.AdStorageImpl;
+import homework.adPortal.storage.impl.UserStorageFileImpl;
+import homework.adPortal.storage.impl.UserStorageImpl;
 
 import java.util.Date;
 import java.util.Scanner;

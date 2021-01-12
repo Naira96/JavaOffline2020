@@ -1,7 +1,7 @@
-package adPortal.util;
+package homework.adPortal.util;
 
-import adPortal.model.Ad;
-import adPortal.model.User;
+import homework.adPortal.model.Ad;
+import homework.adPortal.model.User;
 
 import java.io.*;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class FileUtil {
 
-    private static final String USER_MAP_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\adPortal\\file\\user.Map.txt";
-    private static final String AD_LIST_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\adPortal\\file\\adList.txt";
+    private static final String USER_MAP_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\homework.adPortal\\file\\user.Map.txt";
+    private static final String AD_LIST_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\homework.adPortal\\file\\adList.txt";
 
     public static void serializeUserMap(Map<String, User> userMap) {
         createdFileIfNotExists(USER_MAP_PATH);

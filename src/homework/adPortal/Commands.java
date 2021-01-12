@@ -1,4 +1,4 @@
-package adPortal;
+package homework.adPortal;
 
 public interface Commands {
     //main commands

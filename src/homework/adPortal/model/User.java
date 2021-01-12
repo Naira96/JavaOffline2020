@@ -1,4 +1,4 @@
-package adPortal.model;
+package homework.adPortal.model;
 
 import java.io.Serializable;
 import java.util.Objects;

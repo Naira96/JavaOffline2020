@@ -1,4 +1,4 @@
-package adPortal.model;
+package homework.adPortal.model;
 
 public enum Category {
 
