@@ -4,15 +4,15 @@ import homework.blog.exception.PostNotFoundException;
 import homework.blog.model.Category;
 import homework.blog.model.Post;
 import homework.blog.postStorage.CommandsBlog;
+import homework.blog.postStorage.PostStorage;
 import homework.blog.postStorage.impl.PostStorageImpl;
 
 import java.util.Date;
 import java.util.Scanner;
 
 public class Blog implements CommandsBlog {
-    private static PostStorageImpl postStorageImpl = new PostStorageImpl();
+    private static PostStorage postStorageImpl = new PostStorageImpl();
     private static Scanner scanner = new Scanner(System.in);
-    private static Date date = new Date();
 
 
     public static void main(String[] args) {
