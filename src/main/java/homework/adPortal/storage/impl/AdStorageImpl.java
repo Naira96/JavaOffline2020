@@ -41,6 +41,7 @@ public class AdStorageImpl implements AdStorage {
         }
     }
 
+
     @Override
     public void deleteMyAds(User user) {
         for (Ad ad : adList) {

@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class FileUtil {
 
-    private static final String USER_MAP_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\homework.adPortal\\file\\user.Map.txt";
-    private static final String AD_LIST_PATH = "C:\\Users\\User\\JavaOffline2020\\src\\homework\\homework.adPortal\\file\\adList.txt";
+    private static final String USER_MAP_PATH = "src/main/resources/user.Map.txt";
+    private static final String AD_LIST_PATH = "src/main/resources/adList.txt";
 
     public static void serializeUserMap(Map<String, User> userMap) {
         createdFileIfNotExists(USER_MAP_PATH);

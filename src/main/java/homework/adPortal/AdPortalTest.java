@@ -1,21 +1,30 @@
-package homework.adPortal.model;
+package homework.adPortal;
 
-import homework.adPortal.Commands;
+import homework.adPortal.model.Ad;
+import homework.adPortal.model.Category;
+import homework.adPortal.model.Gender;
+import homework.adPortal.model.User;
 import homework.adPortal.storage.AdStorage;
 import homework.adPortal.storage.UserStorage;
 import homework.adPortal.storage.impl.AdStorageFileImpl;
 import homework.adPortal.storage.impl.AdStorageImpl;
 import homework.adPortal.storage.impl.UserStorageFileImpl;
 import homework.adPortal.storage.impl.UserStorageImpl;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
 public class AdPortalTest implements Commands {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static AdStorage adStorage ;
-    private static UserStorage userStorage ;
+    private static AdStorage adStorage;
+    private static UserStorage userStorage;
     private static User currentUser = null;
 
     public static void main(String[] args) {
@@ -24,10 +33,10 @@ public class AdPortalTest implements Commands {
         System.out.println("1 - HEAP[RAM]");
         System.out.println("2 - FILE[HDD]");
         int storage = Integer.parseInt(scanner.nextLine());
-        if (storage == 2){
+        if (storage == 2) {
             adStorage = new AdStorageFileImpl();
             userStorage = new UserStorageFileImpl();
-        }else {
+        } else {
             adStorage = new AdStorageImpl();
             userStorage = new UserStorageImpl();
         }
@@ -55,10 +64,53 @@ public class AdPortalTest implements Commands {
                 case MAIN_PRINT_ALL_ADS:
                     printAllAds();
                     break;
+                case IMPORT_USERS:
+                    importFromXlsx();
+                    break;
                 default:
                     System.out.println("invalid command. Please try again !!!");
             }
         }
+    }
+
+    private static void importFromXlsx() {
+        System.out.println("Please select xlsx path");
+        String xlsxPath = scanner.nextLine();
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook(xlsxPath);
+            Sheet sheet = workbook.getSheetAt(0);
+            int lastRowNum = sheet.getLastRowNum();
+            for (int i = 1; i <= lastRowNum; i++) {
+                Row row = sheet.getRow(i);
+                String name = row.getCell(0).getStringCellValue();
+                String surname = row.getCell(1).getStringCellValue();
+                Gender gender = Gender.valueOf(row.getCell(2).getStringCellValue());
+                Double age = row.getCell(3).getNumericCellValue();
+                Cell phoneNumber = row.getCell(4);
+                String phoneNumberStr = phoneNumber.getCellType() == CellType.NUMERIC ?
+                        String.valueOf(Double.valueOf(phoneNumber.getNumericCellValue()).intValue()) : phoneNumber.getStringCellValue();
+
+                Cell password =  row.getCell(5);
+               String passwordStr = password.getCellType() == CellType.NUMERIC ?
+                        String.valueOf(Double.valueOf(password.getNumericCellValue()).intValue()) : password.getStringCellValue();
+                User user = new User();
+                user.setName(name);
+                user.setSurname(surname);
+                user.setGender(gender);
+                user.setAge(age.intValue());
+                user.setPhoneNumber(phoneNumberStr);
+                user.setPassword(passwordStr);
+                System.out.println(user);
+                userStorage.add(user);
+                System.out.println("Import was success!");
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error while importing users");
+        }
+
+
     }
 
     private static void printAllAds() {
